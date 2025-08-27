@@ -20,7 +20,7 @@ void setup() {
   Serial.begin(9600);
   delay(100);
   WiFi.mode(WIFI_STA);
-  WiFi.begin("Hive Stud", "shifterambiancefinlesskilt");
+  WiFi.begin("xxx", "xxx"); // Insert your wifi SSID and password
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
   }
@@ -31,7 +31,7 @@ void setup() {
   client.setInsecure();
   http.begin(client, "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1");
   http.addHeader("Content-Type", "application/json");
-  http.addHeader("digitransit-subscription-key", "xxxx"); // Insert your digitransit api key to the second argument.
+  http.addHeader("digitransit-subscription-key", "xxxx"); // Insert your digitransit api key to the second argument
  /*  int httpcode = http.POST((uint8_t *)gql, strlen(gql));
   if (httpcode > 0) {
     String payload = http.getString();
