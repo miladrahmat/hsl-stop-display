@@ -10,8 +10,6 @@ U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE, D1, D2);
 int x = 3;
 WiFiClientSecure client;
 HTTPClient http;
-// const char* gql = R"({"query":"{stop(id:"HSL:1100206"){name stoptimesWithoutPatterns(numberOfDepartures:10){realtimeDeparture headsign trip{route{shortName}}}}}"})";
-// const char* gql = R"({"query":"{stop(id:\"HSL:1100206\"){name stoptimesWithoutPatterns(numberOfDepartures:10){realtimeDeparture headsign trip{route{shortName}}}}}"})";
 const char* gql = R"({"query":"{stop(id:\"HSL:1100206\"){name stoptimesWithoutPatterns(numberOfDepartures:2){realtimeDeparture headsign trip{route{shortName}}}}}"})";
 
 
@@ -32,13 +30,6 @@ void setup() {
   http.begin(client, "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1");
   http.addHeader("Content-Type", "application/json");
   http.addHeader("digitransit-subscription-key", "xxxx"); // Insert your digitransit api key to the second argument
- /*  int httpcode = http.POST((uint8_t *)gql, strlen(gql));
-  if (httpcode > 0) {
-    String payload = http.getString();
-    Serial.println(payload);
-  } else {
-    Serial.printf("HTTP POST failed %s\n", http.errorToString(httpcode));
-  } */
 }
 
 void loop() {
